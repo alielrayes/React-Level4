@@ -1,14 +1,16 @@
-import   './Home.css';
+import "./Home.css";
 
+import React from "react";
 
-import React from 'react';
+ 
 
 const Home = () => {
+ 
   return (
-    <div>
-      HOMEEEEEEEEEE
-    </div>
+  <div>
+
+  </div>
   );
-}
+};
 
 export default Home;
