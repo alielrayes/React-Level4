@@ -3,29 +3,32 @@ import { Outlet } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Delete } from "@mui/icons-material";
-import { IconButton } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton, Link } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 
 const Root = () => {
   return (
     <div>
-      <Typography color="secondary.main" variant="h4">
-        Ali hassan
-      </Typography>
-
-      <Button
-        sx={{ mr: "auto", ml: "auto", display: "flex" }}
-        endIcon={<Delete />}
-        variant="contained"
-        color="error"
-      >
-        Click here
-      </Button>
+      <AppBar position="static">
+        <Toolbar>
 
 
-      <IconButton size="large" color="info" >
-        <MenuIcon fontSize="inherit" />
-      </IconButton>
+     
+
+
+          <Link   sx={{ flexGrow: 1, textDecoration: "none" }} color="inherit" href="/">  My expenses  </Link>
+
+
+         
+
+          <Button color="inherit">Login</Button>
+
+
+        </Toolbar>
+      </AppBar>
 
       <Outlet />
     </div>
