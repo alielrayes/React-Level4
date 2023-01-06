@@ -11,4 +11,6 @@
   color: whitesmoke;
 }
 
-
+.border{
+  border:  5px solid red
+}
