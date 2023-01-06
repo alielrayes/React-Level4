@@ -8,8 +8,11 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import { Create, Home, Logout, Person2, Settings } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Drawerr = ({ drawerWidth }) => {
+  const navigate = useNavigate();
   return (
     <Drawer
       sx={{
@@ -28,7 +31,11 @@ const Drawerr = ({ drawerWidth }) => {
 
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             <ListItemIcon>
               <Home />
             </ListItemIcon>
@@ -37,7 +44,11 @@ const Drawerr = ({ drawerWidth }) => {
         </ListItem>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton
+            onClick={() => {
+              navigate("/create");
+            }}
+          >
             <ListItemIcon>
               <Create />
             </ListItemIcon>
