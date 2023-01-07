@@ -8,6 +8,13 @@ import {
 } from "react-router-dom";
 import Create from "pages/create/Create";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { red, teal } from '@mui/material/colors';
+
+
+
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
@@ -19,8 +26,20 @@ const router = createBrowserRouter(
   )
 );
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+   
+  },
+});
+
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;

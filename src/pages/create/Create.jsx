@@ -6,9 +6,9 @@ import { ChevronRight } from "@mui/icons-material";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
-  backgroundColor: purple[500],
+  backgroundColor: theme.palette.primary.main,
   "&:hover": {
-    backgroundColor: purple[700],
+    backgroundColor: theme.palette.primary.light,
   },
 }));
 
@@ -40,6 +40,8 @@ const Create = () => {
       <ColorButton sx={{ mt: "22px" }} variant="contained">
         Submit <ChevronRight />
       </ColorButton>
+
+ 
     </Box>
   );
 };
