@@ -18,8 +18,9 @@ const Root = () => {
           ml: `${drawerWidth}px`,
           display: " flex",
           justifyContent: "center",
+          mt: "66px"
         }}
-        className="border"
+       
       >
         <Outlet />
       </Box>
