@@ -1,4 +1,12 @@
-import { Divider, Drawer, List, Toolbar } from "@mui/material";
+import {
+  Divider,
+  Drawer,
+  List,
+  Toolbar,
+  Button,
+  useTheme,
+  IconButton,
+} from "@mui/material";
 import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -7,12 +15,22 @@ import ListItemText from "@mui/material/ListItemText";
 
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
-import { Create, Home, Logout, Person2, Settings } from "@mui/icons-material";
+import {
+  Brightness4,
+  Brightness7,
+  Create,
+  Home,
+  Logout,
+  Person2,
+  Settings,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Drawerr = ({ drawerWidth }) => {
+const Drawerr = ({ drawerWidth, setmyMOde }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
+
   return (
     <Drawer
       sx={{
@@ -26,10 +44,40 @@ const Drawerr = ({ drawerWidth }) => {
       variant="permanent"
       anchor="left"
     >
-      <Toolbar />
-      <Divider />
+      {/* <Button
+        onClick={() => {
+          setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
+        }}
+        variant="contained"
+        color="warning"
+      >
+        dark
+      </Button> */}
+
+
 
       <List>
+
+      <ListItem sx={{ display: "flex" , justifyContent: "center", mb: "14px"}} disablePadding>
+
+      <IconButton
+     
+        onClick={() => {
+          setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
+        }}
+        color="inherit"
+      >
+        {theme.palette.mode === "dark" ? <Brightness7 sx={{color: "orange"}} /> : <Brightness4 />}
+      </IconButton>
+      </ListItem>
+
+
+
+      <Divider />
+
+
+
+
         <ListItem disablePadding>
           <ListItemButton
             onClick={() => {

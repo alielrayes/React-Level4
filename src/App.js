@@ -8,9 +8,10 @@ import {
 } from "react-router-dom";
 import Create from "pages/create/Create";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 import { CssBaseline } from "@mui/material";
 import { red, teal } from "@mui/material/colors";
+import { useState } from "react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,23 +24,19 @@ const router = createBrowserRouter(
   )
 );
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "light",
-    // @ts-ignore
-    ali: {
-      main: '#64748B',
-      contrastText: '#fff',
-    },
-  },
-});
+
+
+
 
 function App() {
+
+
+
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
+  
+      
       <RouterProvider router={router} />
-    </ThemeProvider>
+   
   );
 }
 
