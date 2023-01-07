@@ -37,13 +37,7 @@ const Home = () => {
           <Close sx={{ fontSize: "20px" }} />
         </IconButton>
       </Paper>
-    
-    
- 
-    
-    
-    
-    
+      
     
     
     </Box>
