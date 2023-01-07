@@ -10,10 +10,7 @@ import Create from "pages/create/Create";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import { red, teal } from '@mui/material/colors';
-
-
-
+import { red, teal } from "@mui/material/colors";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,8 +25,12 @@ const router = createBrowserRouter(
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark",
-   
+    mode: "light",
+    // @ts-ignore
+    ali: {
+      main: '#64748B',
+      contrastText: '#fff',
+    },
   },
 });
 
