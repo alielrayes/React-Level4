@@ -1,8 +1,15 @@
-import React from "react";
-import { Toolbar, AppBar, Avatar, Link, Typography, IconButton } from "@mui/material";
+ 
+import {
+  Toolbar,
+  AppBar,
+  Avatar,
+  Link,
+  Typography,
+  IconButton,
+} from "@mui/material";
 import { Menu } from "@mui/icons-material";
 
-const Appbar = ({ drawerWidth, setnoneORblock }) => {
+const Appbar = ({ drawerWidth, showDrawer }) => {
   return (
     <AppBar
       sx={{
@@ -12,9 +19,12 @@ const Appbar = ({ drawerWidth, setnoneORblock }) => {
       position="static"
     >
       <Toolbar>
-        <IconButton onClick={() => {
-          setnoneORblock("block")
-        }} sx={{display : {sm: "none"} }}  >
+        <IconButton
+          onClick={() => {
+            showDrawer();
+          }}
+          sx={{ mr: "9px", display: { sm: "none" } }}
+        >
           <Menu />
         </IconButton>
         <Link

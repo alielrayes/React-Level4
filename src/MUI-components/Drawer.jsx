@@ -17,7 +17,7 @@ import {
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Drawerr = ({ drawerWidth, setmyMOde, noneORblock }) => {
+const Drawerr = ({  drawerWidth, setmyMOde, noneORblock, drawerType, hideDrawer }) => {
   const currentLocation = useLocation();
 
   const navigate = useNavigate();
@@ -35,8 +35,12 @@ const Drawerr = ({ drawerWidth, setmyMOde, noneORblock }) => {
           boxSizing: "border-box",
         },
       }}
-      variant="permanent"
+      variant={drawerType}
       anchor="left"
+      open={true}
+      onClose={() => {
+        hideDrawer()
+      }}
     >
       <List
        

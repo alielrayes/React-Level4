@@ -45,17 +45,30 @@ const Root = () => {
   });
 
   const [noneORblock, setnoneORblock] = useState("none");
+  const [drawerType, setdrawerType] = useState("permanent");
+
+  const showDrawer = () => {
+    setdrawerType("temporary");
+    setnoneORblock("block");
+  };
+
+  const hideDrawer = () => {
+    setdrawerType("permanent");
+    setnoneORblock("none");
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div>
-        <Appbar drawerWidth={drawerWidth} setnoneORblock={setnoneORblock} />
+        <Appbar drawerWidth={drawerWidth} showDrawer={showDrawer} />
 
         <Drawerr
           drawerWidth={drawerWidth}
           setmyMOde={setmyMOde}
           noneORblock={noneORblock}
+          drawerType={drawerType}
+          hideDrawer={hideDrawer}
         />
 
         <Box
