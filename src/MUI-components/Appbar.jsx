@@ -1,13 +1,22 @@
 import React from "react";
-import { Toolbar, AppBar, Avatar, Link, Typography } from "@mui/material";
+import { Toolbar, AppBar, Avatar, Link, Typography, IconButton } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 
-const Appbar = ({ drawerWidth }) => {
+const Appbar = ({ drawerWidth, setnoneORblock }) => {
   return (
     <AppBar
-      sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { xs: 0, sm: `${drawerWidth}px` },
+      }}
       position="static"
     >
       <Toolbar>
+        <IconButton onClick={() => {
+          setnoneORblock("block")
+        }} sx={{display : {sm: "none"} }}  >
+          <Menu />
+        </IconButton>
         <Link
           sx={{
             flexGrow: 1,

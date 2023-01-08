@@ -44,18 +44,25 @@ const Root = () => {
     },
   });
 
+  const [noneORblock, setnoneORblock] = useState("none");
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div>
-        <Appbar drawerWidth={drawerWidth} />
+        <Appbar drawerWidth={drawerWidth} setnoneORblock={setnoneORblock} />
 
-        <Drawerr drawerWidth={drawerWidth} setmyMOde={setmyMOde} />
+        <Drawerr
+          drawerWidth={drawerWidth}
+          setmyMOde={setmyMOde}
+          noneORblock={noneORblock}
+        />
 
         <Box
+          // className="border"
           component="main"
           sx={{
-            ml: `${drawerWidth}px`,
+            ml: { sm: `${drawerWidth}px` },
             display: " flex",
             justifyContent: "center",
             mt: "66px",

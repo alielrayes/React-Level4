@@ -17,7 +17,7 @@ import {
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Drawerr = ({ drawerWidth, setmyMOde }) => {
+const Drawerr = ({ drawerWidth, setmyMOde, noneORblock }) => {
   const currentLocation = useLocation();
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
   return (
     <Drawer
       sx={{
-        display: {xs: "none", sm: "block", },
+        display: {xs: noneORblock, sm: "block", },
 
         width: `${drawerWidth}px`,
         flexShrink: 0,
