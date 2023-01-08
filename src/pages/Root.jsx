@@ -5,7 +5,7 @@ import Appbar from "MUI-components/Appbar";
 import Drawerr from "MUI-components/Drawer";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { cyan, deepPurple, pink } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 
 const drawerWidth = 240;
 const Root = () => {
@@ -28,8 +28,8 @@ const Root = () => {
             },
 
             favColor: {
-              main: pink[500]
-            }
+              main: grey[300],
+            },
           }
         : {
             // palette values for dark mode
@@ -38,13 +38,11 @@ const Root = () => {
             },
 
             favColor: {
-              main: cyan[400]
-            }
+              main: grey[800],
+            },
           }),
     },
   });
-
- 
 
   return (
     <ThemeProvider theme={darkTheme}>
