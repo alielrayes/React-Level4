@@ -1,10 +1,11 @@
 import { Box } from "@mui/system";
 import "./Home.css";
 import React from "react";
-import { Paper, Typography, IconButton } from "@mui/material";
+import { Paper, Typography, IconButton, useTheme } from "@mui/material";
 import { Close } from "@mui/icons-material";
 
 const Home = () => {
+  const themeee = useTheme();
   return (
     <Box>
       <Paper
@@ -37,9 +38,17 @@ const Home = () => {
           <Close sx={{ fontSize: "20px" }} />
         </IconButton>
       </Paper>
-      
-    
-    
+
+      <Typography
+        color={
+          // @ts-ignore
+          themeee.palette.favColor.main
+        }
+        mt={15}
+        variant="h5"
+      >
+        Ali Hassan
+      </Typography>
     </Box>
   );
 };
