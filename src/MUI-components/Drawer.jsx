@@ -26,6 +26,8 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
   return (
     <Drawer
       sx={{
+        display: {xs: "none", sm: "block", },
+
         width: `${drawerWidth}px`,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
@@ -36,7 +38,9 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
       variant="permanent"
       anchor="left"
     >
-      <List>
+      <List
+       
+      >
         <ListItem
           sx={{ display: "flex", justifyContent: "center", mb: "14px" }}
           disablePadding
@@ -84,9 +88,6 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
           </ListItemButton>
         </ListItem>
 
-
-
-
         <ListItem
           sx={{
             bgcolor:
@@ -108,23 +109,6 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
             <ListItemText primary="Create" />
           </ListItemButton>
         </ListItem>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <ListItem disablePadding>
           <ListItemButton>
