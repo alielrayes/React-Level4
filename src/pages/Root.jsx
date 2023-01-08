@@ -8,7 +8,13 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const drawerWidth = 240;
 const Root = () => {
-  const [myMOde, setmyMOde] = useState("dark");
+  const [myMOde, setmyMOde] = useState(
+    localStorage.getItem("currentMode") === null
+      ? "dark"
+      : localStorage.getItem("currentMode") === "light"
+      ? "light"
+      : "dark"
+  );
   const darkTheme = createTheme({
     palette: {
       // @ts-ignore

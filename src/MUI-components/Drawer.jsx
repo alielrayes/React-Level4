@@ -44,39 +44,30 @@ const Drawerr = ({ drawerWidth, setmyMOde }) => {
       variant="permanent"
       anchor="left"
     >
-      {/* <Button
-        onClick={() => {
-          setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
-        }}
-        variant="contained"
-        color="warning"
-      >
-        dark
-      </Button> */}
-
-
+ 
 
       <List>
+        <ListItem
+          sx={{ display: "flex", justifyContent: "center", mb: "14px" }}
+          disablePadding
+        >
+          <IconButton
+            onClick={() => {
+              localStorage.setItem("currentMode", theme.palette.mode === "dark" ? "light" : "dark")
 
-      <ListItem sx={{ display: "flex" , justifyContent: "center", mb: "14px"}} disablePadding>
+              setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
+            }}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7 sx={{ color: "orange" }} />
+            ) : (
+              <Brightness4 />
+            )}
+          </IconButton>
+        </ListItem>
 
-      <IconButton
-     
-        onClick={() => {
-          setmyMOde(theme.palette.mode === "light" ? "dark" : "light");
-        }}
-        color="inherit"
-      >
-        {theme.palette.mode === "dark" ? <Brightness7 sx={{color: "orange"}} /> : <Brightness4 />}
-      </IconButton>
-      </ListItem>
-
-
-
-      <Divider />
-
-
-
+        <Divider />
 
         <ListItem disablePadding>
           <ListItemButton
