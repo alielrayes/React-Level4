@@ -19,11 +19,11 @@ const ColorButton = styled(Button)(({ theme }) => ({
 const Create = () => {
   const [title, settitle] = useState("");
   const [price, setprice] = useState(0);
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   // Why <<<component="form">>> ?
   return (
-    <Box sx={{ width: "380px" }} component="form">
+    <Box autoComplete="off" sx={{ width: "380px" }} component="form">
       <TextField
         onChange={(eo) => {
           settitle(eo.target.value);
@@ -60,13 +60,8 @@ const Create = () => {
             },
             body: JSON.stringify({ price, title }),
           }).then(() => {
-            navigate("/")
-          })
-
-
-
-
-
+            navigate("/");
+          });
         }}
         sx={{ mt: "22px" }}
         variant="contained"
