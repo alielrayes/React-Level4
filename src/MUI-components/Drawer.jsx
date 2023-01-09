@@ -17,32 +17,29 @@ import {
 
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Drawerr = ({  drawerWidth, setmyMOde, noneORblock, drawerType, hideDrawer }) => {
+const Drawerr = ({
+  drawerWidth,
+  setmyMOde,
+  noneORblock,
+  drawerType,
+  hideDrawer,
+}) => {
   const currentLocation = useLocation();
 
   const navigate = useNavigate();
   const theme = useTheme();
 
-
-
-
-const myList = [
-  {text: "Home", icon: "ffffff", path: "/" }
-]
-
-
-
-
-
-
-
-
-
+  const myList = [
+    { text: "Home", icon: <Home />, path: "/" },
+    { text: "Create", icon: <Create />, path: "/create" },
+    { text: "Profile", icon: <Person2 />, path: "/profile" },
+    { text: "Settings", icon: <Settings />, path: "/settings" },
+  ];
 
   return (
     <Drawer
       sx={{
-        display: {xs: noneORblock, sm: "block", },
+        display: { xs: noneORblock, sm: "block" },
 
         width: `${drawerWidth}px`,
         flexShrink: 0,
@@ -55,12 +52,10 @@ const myList = [
       anchor="left"
       open={true}
       onClose={() => {
-        hideDrawer()
+        hideDrawer();
       }}
     >
-      <List
-       
-      >
+      <List>
         <ListItem
           sx={{ display: "flex", justifyContent: "center", mb: "14px" }}
           disablePadding
@@ -86,70 +81,29 @@ const myList = [
 
         <Divider />
 
-
-
-
-        <ListItem
-          sx={{
-            bgcolor:
-              currentLocation.pathname === "/"
-                ? // @ts-ignore
-                  theme.palette.favColor.main
-                : null,
-          }}
-          disablePadding
-        >
-          <ListItemButton
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem
-          sx={{
-            bgcolor:
-              currentLocation.pathname === "/create"
-                ? // @ts-ignore
-                  theme.palette.favColor.main
-                : null,
-          }}
-          disablePadding
-        >
-          <ListItemButton
-            onClick={() => {
-              navigate("/create");
-            }}
-          >
-            <ListItemIcon>
-              <Create />
-            </ListItemIcon>
-            <ListItemText primary="Create" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <Person2 />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItemButton>
-        </ListItem>
-
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <Settings />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItemButton>
-        </ListItem>
+        {myList.map((item) => {
+          return (
+            <ListItem
+              sx={{
+                bgcolor:
+                  currentLocation.pathname === item.path
+                    ? // @ts-ignore
+                      theme.palette.favColor.main
+                    : null,
+              }}
+              disablePadding
+            >
+              <ListItemButton
+                onClick={() => {
+                  navigate(item.path);
+                }}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
 
         <ListItem disablePadding>
           <ListItemButton>
@@ -158,10 +112,6 @@ const myList = [
             </ListItemIcon>
             <ListItemText primary="Logout" />
           </ListItemButton>
-        
-        
-        
-        
         </ListItem>
       </List>
     </Drawer>

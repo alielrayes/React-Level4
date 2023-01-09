@@ -9,9 +9,8 @@ import {
 import Create from "pages/create/Create";
 
 
-import { CssBaseline } from "@mui/material";
-import { red, teal } from "@mui/material/colors";
-import { useState } from "react";
+
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +18,10 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
 
-      {/* ... etc. */}
+
+      <Route path="*" element={<NotFound />} />
+
+     
     </Route>
   )
 );
