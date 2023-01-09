@@ -23,6 +23,22 @@ const Drawerr = ({  drawerWidth, setmyMOde, noneORblock, drawerType, hideDrawer 
   const navigate = useNavigate();
   const theme = useTheme();
 
+
+
+
+const myList = [
+  {text: "Home", icon: "ffffff", path: "/" }
+]
+
+
+
+
+
+
+
+
+
+
   return (
     <Drawer
       sx={{
@@ -69,6 +85,9 @@ const Drawerr = ({  drawerWidth, setmyMOde, noneORblock, drawerType, hideDrawer 
         </ListItem>
 
         <Divider />
+
+
+
 
         <ListItem
           sx={{
@@ -139,6 +158,10 @@ const Drawerr = ({  drawerWidth, setmyMOde, noneORblock, drawerType, hideDrawer 
             </ListItemIcon>
             <ListItemText primary="Logout" />
           </ListItemButton>
+        
+        
+        
+        
         </ListItem>
       </List>
     </Drawer>
