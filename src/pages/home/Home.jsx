@@ -11,15 +11,18 @@ const Home = () => {
     fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setmydata(data));
-  }, []);
+  }, [mydata]);
 
-  console.log(mydata);
+  // const [totalPrice, settotalPrice] = useState(0);
+
+  let totalPrice = 0;
   return (
     <Box>
       {mydata.map((item) => {
+        totalPrice += item.price;
         return (
           <Paper
-          key={item.id}
+            key={item.id}
             sx={{
               position: "relative",
               width: "366px",
@@ -48,11 +51,10 @@ const Home = () => {
 
             <IconButton
               onClick={() => {
-                fetch(`http://localhost:3100/mydata/${item.id}`, { method: "DELETE" });
+                fetch(`http://localhost:3100/mydata/${item.id}`, {
+                  method: "DELETE",
+                });
               }}
-
-
-
               sx={{ position: "absolute", top: "0", right: "0" }}
             >
               <Close sx={{ fontSize: "20px" }} />
@@ -60,6 +62,10 @@ const Home = () => {
           </Paper>
         );
       })}
+
+      <Typography mt="55px" textAlign="center" variant="h6">
+        👉 You Spend ${totalPrice}
+      </Typography>
     </Box>
   );
 };
