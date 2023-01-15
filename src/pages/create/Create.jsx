@@ -18,7 +18,9 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 const Create = () => {
   const [title, settitle] = useState("");
+  const [titleErroe, settitleErroe] = useState(false);
   const [price, setprice] = useState(0);
+  const [priceError, setpriceError] = useState(false);
   const navigate = useNavigate();
 
   // Why <<<component="form">>> ?
@@ -35,9 +37,11 @@ const Create = () => {
           startAdornment: <InputAdornment position="start">👉</InputAdornment>,
         }}
         variant="filled"
+        error={titleErroe}
       />
 
       <TextField
+      error={priceError}
         onChange={(eo) => {
           setprice(Number(eo.target.value));
         }}
@@ -49,11 +53,26 @@ const Create = () => {
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
         }}
         variant="filled"
+        type="number"
       />
 
       <ColorButton
         onClick={(params) => {
-          fetch("http://localhost:3100/mydata", {
+          settitleErroe(true)
+          setpriceError(true)
+
+          if (title) {
+            settitleErroe(false)
+          }
+
+          if (price) {
+            setpriceError(false)
+          }
+
+
+
+          if (title.trim()) {
+            fetch("http://localhost:3100/mydata", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -62,6 +81,7 @@ const Create = () => {
           }).then(() => {
             navigate("/");
           });
+          }
         }}
         sx={{ mt: "22px" }}
         variant="contained"
