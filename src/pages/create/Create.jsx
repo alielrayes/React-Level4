@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { purple } from "@mui/material/colors";
 import { ChevronRight } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -17,19 +18,35 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const Create = () => {
-  const [title, settitle] = useState("");
-  const [titleErroe, settitleErroe] = useState(false);
-  const [price, setprice] = useState(0);
-  const [priceError, setpriceError] = useState(false);
   const navigate = useNavigate();
 
-  // Why <<<component="form">>> ?
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = ({ price, title }) => {
+    price = Number(price);
+    fetch("http://localhost:3100/mydata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ price, title }),
+    }).then(() => {
+      navigate("/");
+    });
+  };
+
   return (
-    <Box autoComplete="off" sx={{ width: "380px" }} component="form">
+    <Box
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
+      sx={{ width: "380px" }}
+      component="form"
+    >
       <TextField
-        onChange={(eo) => {
-          settitle(eo.target.value);
-        }}
         fullWidth={true}
         label="Transaction Title"
         sx={{ mt: "22px", display: "block" }}
@@ -37,14 +54,24 @@ const Create = () => {
           startAdornment: <InputAdornment position="start">👉</InputAdornment>,
         }}
         variant="filled"
-        error={titleErroe}
+        {...register("title", {
+          required: { value: true, message: "Requires field" },
+          minLength: { value: 3, message: "minumn length is 3" },
+        })}
+        error={Boolean(errors.title)}
+        helperText={
+          Boolean(errors.title) ? errors.title?.message.toString() : null
+        }
       />
 
       <TextField
-      error={priceError}
-        onChange={(eo) => {
-          setprice(Number(eo.target.value));
-        }}
+        error={Boolean(errors.price)}
+        helperText={
+          Boolean(errors.price) ? errors.price?.message.toString() : null
+        }
+        {...register("price", {
+          required: { value: true, message: "Required filed" },
+        })}
         fullWidth={true}
         label=" Amount"
         id="filled-start-adornment"
@@ -57,32 +84,8 @@ const Create = () => {
       />
 
       <ColorButton
-        onClick={(params) => {
-          settitleErroe(true)
-          setpriceError(true)
-
-          if (title) {
-            settitleErroe(false)
-          }
-
-          if (price) {
-            setpriceError(false)
-          }
-
-
-
-          if (title.trim()) {
-            fetch("http://localhost:3100/mydata", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ price, title }),
-          }).then(() => {
-            navigate("/");
-          });
-          }
-        }}
+        type="submit"
+        onClick={(params) => {}}
         sx={{ mt: "22px" }}
         variant="contained"
       >
