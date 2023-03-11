@@ -11,9 +11,19 @@ const Home = () => {
     fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setmydata(data));
-  }, [mydata]);
+  }, []);
 
-  // const [totalPrice, settotalPrice] = useState(0);
+  const handleDelete = (item) => {
+    fetch(`http://localhost:3100/mydata/${item.id}`, {
+      method: "DELETE",
+    });
+
+    const newArr = mydata.filter((myObject) => {
+      return myObject.id !== item.id;
+    });
+
+    setmydata(newArr);
+  }
 
   let totalPrice = 0;
   return (
@@ -51,9 +61,7 @@ const Home = () => {
 
             <IconButton
               onClick={() => {
-                fetch(`http://localhost:3100/mydata/${item.id}`, {
-                  method: "DELETE",
-                });
+                handleDelete(item)
               }}
               sx={{ position: "absolute", top: "0", right: "0" }}
             >
